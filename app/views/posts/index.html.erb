@@ -1,0 +1,12 @@
+<div class='row'>
+  <div class='large-12 small-12 columns'>
+    <h1>All posts</h1>
+    <hr />
+    <% @posts.each do |p| %>
+      <h2><%= p.title %></h2>
+      <p><%= p.body %></p>
+      <hr />
+    <% end %>
+  </div>
+  </div>
+</div>
