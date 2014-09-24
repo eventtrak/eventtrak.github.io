@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'rpsec-its'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'factory_girl_rails'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
