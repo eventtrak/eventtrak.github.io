@@ -1,0 +1,51 @@
+// Place all the styles related to the tickets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.tickets {
+  background: black;
+  #redeemTickets {
+    border: red;
+    margin: auto;
+    width: 768px;
+    #phraseGenerator {
+      width: 100%;
+      div {
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 6px;
+        vertical-align: top;
+        width: 124px;
+        &#name {
+          width: 144px;
+        }
+        &#article {
+          width: 112px;
+        }
+        button {
+          display: block;
+          height: 60px;
+          margin-bottom: 6px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  #ticketStatusDisplay {
+    color: white;
+    #status {
+      margin-left: 40px;
+    }
+  }
+  #submitCodeButton {
+    width: 100%;
+  }
+  #clearDisplay {
+    color: white;
+    margin-top: 30px;
+    @include vendor-prefix(transition, color 0.25s);
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+}

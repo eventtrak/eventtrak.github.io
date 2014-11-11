@@ -1,0 +1,42 @@
+<% provide(:title, 'Index') %>
+<div class="whole_page">
+	<div class="searchbar">
+		<form method="get">
+			<span>
+				<input name="location" type="text" class="search location" placeholder="Where's the venue?" value="<%=h @locationinput %>">
+				<input name="name" type="text" class="search vname" placeholder="What's the name?" value ="<%=h @nameinput %>">
+				<input name="maxcapacity" type="number" class="search cap" placeholder="Max Capacity" value="<%=h @maxcapinput %>">
+
+			</span>
+			<button type="submit" class="btn btn-primary btn-lg Icon">&#xE832</button>
+		</form>
+	</div>
+	<% @select_venues.each do |v| %>
+		<div class = "locations">
+			<div class = "card" style="background-image:url(<%= v.image_path %>);background-size:cover;">
+				<div class ="card_info">
+					<div class="name">
+						<p>
+							<a href='/venues/<%= v.id %>'  target='_self'><%= (v.name.length >40) ? (v.name[0..40] + '...') : (v.name) %></a>
+						</p>
+					</div>	
+					<div class = "info">
+						<div class ="size">
+								<p>
+								Capacity: <%= v.capacity %>
+							</p>
+						</div>
+						<div class="price">
+							<p>
+								Price: <%= (v.max_price.blank?) ? ('----') : ("$" * v.max_price) %>
+							</p>
+						</div>	
+					</div>
+				</div>	
+			</div>
+		</div> 
+  <% end %>
+	<div class="footer">
+		<p>DON'T STEAL MY STUFF, COPYRIGHTED 2014</p>
+	</div>	
+</div>

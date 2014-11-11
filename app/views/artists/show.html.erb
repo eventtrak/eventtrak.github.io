@@ -1,0 +1,215 @@
+<% provide(:title, @artist.artist_name) %>
+<% provide(:background, 'dylan_right.jpg') %>
+<div class="wrapper">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <%-#------------------ header------------------------------------- %>
+<div class='header'>
+  <ul id="ArtistChoice">
+    <a><li class="btn btn-primary btn-lg ArtistChoice1 " data-toggle="modal"
+data-target="#createEventModal">Create an Event</li></a>
+    <a href="/venues"><li class="btn btn-primary btn-lg ArtistChoice1 ">Search for Venues</li></a>
+    <% if !@current_artist %>
+    <a href="/login"><li class="btn btn-primary btn-lg ArtistChoice1 ">Login</li></a>
+    <% else %>
+    <a href="/logout"><li class="btn btn-primary btn-lg ArtistChoice1 ">Logout</li></a>
+    <% end %>
+  </ul> 
+</div>
+
+
+  <%-#------------------------main content------------------------- %>
+  <div class="content">
+    <div class="column1">
+      <h1 class='ArtistName' <%= "contenteditable=true" if @is_current_artist
+%>><%= @artist.artist_name.html_safe %></h1>
+      <section class='ArtistAbout'>
+        <p id='artistdescription' <%= "contenteditable=true" if @is_current_artist %>>
+          <% if @artist.description.blank? and @is_current_artist %>
+           Insert your description here.
+          <% else %>
+          <%= @artist.description %>
+          <% end %>
+              </p>
+        <ul class='SocialLinks'>
+        <% if !@artist.facebook.blank? %>
+         <a><li class='FacebookLink ArtistFacebookLink'><span class='facebookicon 
+                                                                        Icon'>&#xE801;</span></li></a>
+        <% end %>
+        <% if !@artist.twitter.blank? %>
+          <a><li class='TwitterLink ArtistTwitterLink'><span class='twittericon
+                                                             Icon'>&#xE803;</span></li></a>
+        <% end %>
+        <% if !@artist.instagram.blank? %>
+          <a><li class='InstagramLink ArtistInstagramLink'><span class='instagramicon
+                                                                 Icon'>&#xE831;</span></li></a>
+        <% end %>
+        <% if !@artist.youtube.blank? %>
+          <a><li class='YoutubeLink ArtistYoutubeLink'><span class='youtubeicon
+                                                             Icon'>&#xE834;</span></li></a>
+        <% end %>
+        <% if @is_current_artist %>
+          <a><li class='AddLink' data-toggle="modal" data-target="#myModal2"><span class='addicon
+                                                                                 Icon'>&#xE810;</span></li></a>
+        <% end %>
+
+        </ul>
+        <div class='Bar'></div>
+        <div class='ArrowLink'><span class='Icon ArrowDown'>&#xE805;</span></div>
+        <%-#-------------------------Social Streams-----------------------------------%>
+        <div class="Twitter">
+          <div style="width:350px;font-size:8px;text-align:right;"><script type="text/javascript">
+          document.write(unescape("%3Cscript src='http://twitterforweb.com/twitterbox.js?username=<%= @artist.twitter %>&settings=1,0,3,350,500,f4f4f4,0,c4c4c4,101010,1,2,336699' type='text/javascript'%3E%3C/script%3E"));</script>Created by: <a href="http://twitterforweb.com" target="_blank">twitter website widget</a></div>
+        </div>
+
+        <div class="Facebook">
+          <div class="fb-like-box" data-href="http://www.facebook.com/<%= @artist.facebook %>" data-width="340" data-height="400" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+        </div>
+
+        <div class="Instagram">
+          <iframe src="http://widget.stagram.com/in/<%= @artist.instagram %>/?s=100&w=3&h=3&b=1&p=15" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:375px; height: 375px" ></iframe>
+        </div>
+
+        <div class="Youtube">
+          <script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/youtube.xml&amp;up_channel=<%= @artist.youtube %>&amp;synd=open&amp;w=320&amp;h=390&amp;title=&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js"></script>
+        </div>
+
+        <div class='Bar2'></div>
+        <div class="ArrowUp"><span class='Icon ArrowUp'>&#xE808;</span></div>
+
+        <%#--------------Song Section------------------------------%>
+
+        <div class='ArtistMusicHero'>
+          <h2 class='ArtistMusicName'><span class="ArtistName2"><%= @artist.artist_name %></span>'s            
+Music</h2>
+          <ul class='ArtistMusicTitles'>
+            <li class='ArtistMusicTitleNames'
+                data-id='soundcloudWindowSeat'><span class='Icon'>&#xE818;</span> Song 1</li>
+            <li class='ArtistMusicTitleNames'
+                data-id='soundcloudGhosts'><span class='Icon'>&#xE818;</span> Song 2</li>
+            <li class='ArtistMusicTitleNames'
+                data-id='soundcloudBookmarks'><span class='Icon'>&#xE818;</span> Song 3</li>
+            <li class='ArtistMusicTitleNames'
+                data-id='soundcloudBookReport'><span class='Icon'>&#xE818;</span> Song 4</li>
+            <li class='ArtistMusicTitleNames'
+                data-id='soundcloudPostcards'><span class='Icon'>&#xE818;</span> Song 5</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class='ArtistMusic'>
+        <ul class='ArtistMusicSoundcloud'>
+          <li class='ArtistMusicSoundcloudEmbed' id='soundcloudWindowSeat'><iframe width="100%"
+                                                                                   height="166"
+scrolling="no" frameborder="no"
+                                                                                   src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/103136511"></iframe></li>
+          <li class='ArtistMusicSoundcloudEmbed' id='soundcloudGhosts'><iframe width="100%"
+height="166"
+                                                                               scrolling="no"
+frameborder="no"
+                                                                               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/36433384"></iframe></li>
+          <li class='ArtistMusicSoundcloudEmbed' id='soundcloudBookmarks'><iframe width="100%"
+                                                                                  height="166"
+scrolling="no" frameborder="no"
+                                                                                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/36432796"></iframe></li>
+          <li class='ArtistMusicSoundcloudEmbed' id='soundcloudBookReport'><iframe width="100%"
+                                                                                   height="166"
+scrolling="no" frameborder="no"
+                                                                                   src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/3556944"></iframe></li>
+          <li class='ArtistMusicSoundcloudEmbed' id='soundcloudPostcards'><iframe width="100%"
+                                                                                  height="166"
+scrolling="no" frameborder="no"
+                                                                                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/3556945"></iframe></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class='column2'>
+      <div class='EventsComming'>
+        <div class="Event-Header">
+          <h2>Events</h2>
+        </div>
+        <div class='Event-Body' id='scroll'>
+          <ol class='UpcomingEventsHero'>
+            <% for e in @events %>
+            <% venue = e.venue_date.venue %>
+            <% date = e.venue_date.date %>
+            <li id='artist_event' class='UpcomingEvent'>
+
+              <div class='EventDate'>
+                <p class='EventMonth'><%= I18n.t('date.month_names')[date.month] %></p>
+                <p class='EventDay'><%= date.day %></p>
+              </div>
+              <div class='EventInfo'>
+                <a href='<%= event_path(e.id) %>'>
+                  <h3 class='EventName'><%= e.display_list_name %></h3>
+                </a>
+                <p class='EventVenue'><%= venue.name %></p>
+                <p class='EventTime'><%= date.strftime('%l:%M %p') %></p>
+              </div>
+
+            </li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+      <div class='SimilarArtists'>
+        <div class='panel-heading'>
+          <h2>Similar Artists</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-#---------------------Add modals------------------------------------------------ %>
+<div class="modal" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">ADD A SOCIAL LINK</h4>
+      </div>
+      <div class="modal-bodyArt">
+        <div class="modal-fill">
+          <p>Facebook <input id = "facebook_name" name = "facebook[name]" placeholder="<% if @artist.facebook.blank? %>username<% end %>" value = "<% if !@artist.facebook.blank? %><%= @artist.facebook %><% end %>"
+                             type="text"></p>
+          <p>Twitter <input id = "twitter_name" name = "twitter[name]" placeholder="<% if @artist.twitter.blank? %>username<% end %>" value = "<% if !@artist.twitter.blank? %><%= @artist.twitter %><% end %>"
+                            type="text"></p>
+          <p>Instagram <input id = "instagram_name" name = "instagram[name]" placeholder="<% if @artist.instagram.blank? %>username<% end %>" value = "<% if !@artist.instagram.blank? %><%= @artist.instagram %><% end %>"
+                              type="text"></p>
+          <p>Youtube<input id = "youtube_name" name = "youtube[name]" placeholder="<% if @artist.youtube.blank? %>username<% end %>" value = "<% if !@artist.youtube.blank? %><%= @artist.youtube %><% end %>"
+                           type="text"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary UpdateSocialLinks">Update Social Links</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<%-#------------------------calling card-------------------------------- %>
+
+
+
+<%= render 'layouts/setup_event' %>
+<%= render 'shared/powered_by_tunetap' %>
+<div id="idnumber"><%= @artist.id %></div>
+
+
+
+
+
+
+
+
+

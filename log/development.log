@@ -1,0 +1,311 @@
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20131006005956)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(255), "lname" varchar(255), "email" varchar(255), "password" varchar(255), "is_beta_tester" boolean, "is_artist" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131006005956"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddPasswordDigestToUsers (20131006033546)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.4ms)[0m  [1mALTER TABLE "users" ADD "password_digest" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131006033546"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddIpToUsers (20131018045804)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "client_ip" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131018045804"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBandMembers (20131102033857)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "band_members" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "artist_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131102033857"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateArtists (20131102034128)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "artists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "artist_name" varchar(255), "route_name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131102034128"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddFacebookIdToUsers (20131107175017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "facebook_id" integer(8)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131107175017"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddHasTempPasswordToUsers (20131107223344)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "has_temp_password" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131107223344"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddRememberTokenToUsers (20131107223653)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "remember_token" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131107223653"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTickets (20131108045029)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar(255), "transaction_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131108045029"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTransactions (20131108045103)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "transactions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "ticket_id" integer, "is_paid" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131108045103"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddStripeTokenToUsers (20131108073523)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "stripe_customer_token" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131108073523"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddDescriptionAndValueToTickets (20131108180707)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "tickets" ADD "description" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "tickets" ADD "value" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20131108180707"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to RemoveTicketIdFromETicketIdFromTransactions (20131108183723)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  CREATE TEMPORARY TABLE "atransactions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "ticket_id" integer, "is_paid" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "transactions"[0m
+  [1m[35m (0.9ms)[0m  DROP TABLE "transactions"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "transactions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "is_paid" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "atransactions"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "atransactions"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131108183723"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAttendees (20131109061302)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "attendees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "event_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131109061302"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEvents (20131109061404)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131109061404"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateFacebookFriends (20131109230526)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "facebook_friends" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fbid1" integer(8), "fbid2" integer(8), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131109230526"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUserAnalytics (20131116215310)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "user_analytics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_identifier" varchar(255), "is_registered" boolean, "url" varchar(255), "action" integer, "target" varchar(255), "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131116215310"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddRememberTokenToUserAnalytics (20131118185257)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "user_analytics" ADD "remember_token" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131118185257"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddClaimedToTickets (20131203070715)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "tickets" ADD "claimed" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131203070715"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVenues (20140107233847)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "venues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "capacity" integer, "min_age" integer, "equipment" varchar(255), "min_price" integer, "max_price" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140107233847"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddStuffToVenues (20140108000104)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "venues" ADD "city" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "venues" ADD "state" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "venues" ADD "name" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108000104"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVenueDates (20140108000253)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "venue_dates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "venue_id" integer, "event_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108000253"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddAttachmentAvatarToUsers (20140108173231)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_name" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "avatar_content_type" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "avatar_updated_at" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140108173231"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddAttachmentImageToVenues (20140108174037)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "venues" ADD "image_file_name" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "venues" ADD "image_content_type" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "venues" ADD "image_file_size" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "venues" ADD "image_updated_at" datetime[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108174037"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTicketModels (20140108184634)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "ticket_models" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar(255), "value" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108184634"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddRelationsAmongTickets (20140108185228)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "tickets" ADD "event_id" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "ticket_models" ADD "event_id" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140108185228"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddStuffToEvents (20140108192715)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "events" ADD "artist_id" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "events" ADD "goal" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108192715"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddAmountsToTicketModels (20140108193859)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "ticket_models" ADD "max_amount" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108193859"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddTitleAndBodyToEvents (20140109003341)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "events" ADD "title" varchar(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "events" ADD "body" text
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140109003341"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddAddressToVenues (20140109172614)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "venues" ADD "address" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140109172614"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddUrlToVenues (20140109185051)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "venues" ADD "url" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140109185051"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddTicketModelIdToTicket (20140109201731)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "tickets" ADD "ticket_model_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140109201731"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePerformers (20140109211758)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "performers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "artist_id" integer, "event_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140109211758"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddNameToTickets (20140110012750)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "tickets" ADD "name" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "ticket_models" ADD "name" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140110012750"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddPasswordToArtists (20140110224025)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "artists" ADD "password_digest" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "artists" ADD "remember_token" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140110224025"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddEmailToArtists (20140110224939)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "artists" ADD "email" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140110224939"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddDescriptionToArtists (20140116180348)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "artists" ADD "description" text
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140116180348"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to AddSocialLinksToArtists (20140119181838)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "artists" ADD "youtube" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "artists" ADD "twitter" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "artists" ADD "facebook" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "artists" ADD "instagram" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140119181838"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-09 20:57:00 -0500
+Processing by StaticPagesController#landing2 as HTML
+  Rendered layouts/_artist_signup_form.html.erb (39.2ms)
+  Rendered static_pages/landing2.html.erb within layouts/application (48.5ms)
+Completed 500 Internal Server Error in 124ms
+
+ActionView::Template::Error (undefined method `environment' for nil:NilClass
+  (in /Users/Ilan/EventTrak/app/assets/stylesheets/application.css.scss)):
+    23: 
+    24:     <!-- Place favicon.ico and apple-touch-icon.png in the root directory:          mathiasbynens.be/notes/touch-icons -->
+    25: 
+    26:     <%= stylesheet_link_tag "application" %>
+    27:     <%= stylesheet_link_tag controller.controller_name %>
+    28:     <%= csrf_meta_tags %>
+    29: 
+  app/views/layouts/application.html.erb:26:in `_app_views_layouts_application_html_erb___2294670844033650133_70178783287920'
+
+
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-09 20:57:04 -0500
+Processing by StaticPagesController#landing2 as HTML
+  Rendered layouts/_artist_signup_form.html.erb (1.7ms)
+  Rendered static_pages/landing2.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `environment' for nil:NilClass
+  (in /Users/Ilan/EventTrak/app/assets/stylesheets/application.css.scss)):
+    23: 
+    24:     <!-- Place favicon.ico and apple-touch-icon.png in the root directory:          mathiasbynens.be/notes/touch-icons -->
+    25: 
+    26:     <%= stylesheet_link_tag "application" %>
+    27:     <%= stylesheet_link_tag controller.controller_name %>
+    28:     <%= csrf_meta_tags %>
+    29: 
+  app/views/layouts/application.html.erb:26:in `_app_views_layouts_application_html_erb___2294670844033650133_70178783287920'
+
+
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.8ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-09 20:57:46 -0500
+Processing by StaticPagesController#landing2 as HTML
+  Rendered layouts/_artist_signup_form.html.erb (35.9ms)
+  Rendered static_pages/landing2.html.erb within layouts/application (44.2ms)
+Completed 500 Internal Server Error in 123ms
+
+ActionView::Template::Error (undefined method `environment' for nil:NilClass
+  (in /Users/Ilan/EventTrak/app/assets/stylesheets/application.css.scss)):
+    23: 
+    24:     <!-- Place favicon.ico and apple-touch-icon.png in the root directory:          mathiasbynens.be/notes/touch-icons -->
+    25: 
+    26:     <%= stylesheet_link_tag "application" %>
+    27:     <%= stylesheet_link_tag controller.controller_name %>
+    28:     <%= csrf_meta_tags %>
+    29: 
+  app/views/layouts/application.html.erb:26:in `_app_views_layouts_application_html_erb___3686447584139978920_70213047759920'
+
+
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (21.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-09 20:57:49 -0500
+Processing by StaticPagesController#landing2 as HTML
+  Rendered layouts/_artist_signup_form.html.erb (2.7ms)
+  Rendered static_pages/landing2.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (undefined method `environment' for nil:NilClass
+  (in /Users/Ilan/EventTrak/app/assets/stylesheets/application.css.scss)):
+    23: 
+    24:     <!-- Place favicon.ico and apple-touch-icon.png in the root directory:          mathiasbynens.be/notes/touch-icons -->
+    25: 
+    26:     <%= stylesheet_link_tag "application" %>
+    27:     <%= stylesheet_link_tag controller.controller_name %>
+    28:     <%= csrf_meta_tags %>
+    29: 
+  app/views/layouts/application.html.erb:26:in `_app_views_layouts_application_html_erb___3686447584139978920_70213047759920'
+
+
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /Users/Ilan/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.3ms)

@@ -1,0 +1,59 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "shared";
+
+body.users {
+  background: black;
+  position: relative;
+  #ticketsContainer {
+    color: #CCC;
+    margin: auto;
+    width: 600px;
+    #backToEvent {
+      margin-bottom: 40px;
+      a {
+        @include vendor-prefix(transition, color 0.25s);
+        color: $orange !important;
+      }
+    }
+    #tickets {
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 8px;
+      width: 600px;
+      tr {
+        border-right: 4px;
+        overflow: hidden;
+        &:nth-child(2n) {
+          background: transparentize(#DDD, 0.85);
+        }
+        &.TicketsHeaders {
+          background: $orange;
+          color: white;
+          th {
+            padding: 4px;
+            &:first-child {
+              padding-left: 10px;
+            }
+            &:last-child {
+              padding-right: 10px;
+            }
+          }
+        }
+        &.Ticket {
+
+        }
+        td {
+          padding: 4px;
+          &:first-child {
+            padding-left: 10px;
+          }
+          &:last-child {
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

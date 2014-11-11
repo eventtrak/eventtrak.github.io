@@ -1,0 +1,21 @@
+<% provide(:title, "My tickets") %>
+<div id='ticketsContainer'>
+  <h1>My tickets</h1>
+  <p>Here's a list of all your tickets. No long numbers or complex pictures. On the day of the concert, simply show the doorman the code on your phone (or verbally state your code), and you're in. <br />See you there!</p>
+  <p id='backToEvent'><a href='/dylanowen/events/ithaca'>Back to Dylan Owen: Live at Cornell</a></p>
+  <table id='tickets'>
+    <tr class='TicketsHeaders'>
+      <th>Name</th>
+      <th>Order Date</th>
+      <th>Ticket Code</th>
+    </tr>
+    <% @tickets.each do |t| %>
+    <tr class='Ticket'>
+      <td class='TicketName'><%= t.user.display_name %></td>
+      <td class='TicketDate'><%= (t.created_at - 5.hours).strftime('%b %-m, %Y %-l:%M %p') %></td>
+      <td class='TicketCode'><%= t.code %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<%= render 'shared/powered_by_tunetap', theme: 'Dark' %>

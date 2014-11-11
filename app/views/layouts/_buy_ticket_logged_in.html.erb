@@ -1,0 +1,122 @@
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">BUY TICKETS</h4>
+        <p><%=  @artist.artist_name + " live at " + @venue.name %></p>
+      </div>
+
+
+
+      <div class="modal-body2">       
+        <p class = "hi">Hi User!</p>
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  Ticket Information
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <span> Number of Tickets &nbsp;
+                  <select name="number">
+                    <option> 1 </option><option> 2 </option><option> 3 </option><option> 4 </option>
+                  </select></span><span>&nbsp;&nbsp;&nbsp; Ticket Type &nbsp;<select name="ticketType">
+                    <option> General </option><option> VIP </option>
+                  </select></span></br></br>
+                  <p> Total Cost: (General) <%= @ticket_models[0].format_price(!@current_user.blank?) %> or (VIP) <%= @ticket_models[1].format_price(!@current_user.blank?) %></p>
+                <p>Email (To recieve tickets and reciept)
+                <input type='email' placeholder="<%= @current_user.blank? ? 'Email address' : '' %>" name='email' id='user_email' value="<%= @current_user.email if !@current_user.blank? %>" required='required'></p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                  Payment Information
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body">
+                  
+                  <form action="/transactions" method="POST" id="paymentForm">
+                    <span class="alert alert-danger PaymentErrors"></span>
+
+                    <div class='form-group' id='userName'>
+                      <label>
+                        <span>Name</span>
+                      </label>
+                      <span><input type='text' placeholder="<%= @current_user.blank? ? 'First name' : '' %>" name='fname' id='user_fname' value='<%= @current_user.fname if !@current_user.blank? %>' required='required' /></span>
+                      <span><input type='text' placeholder="<%= @current_user.blank? ? 'Last name' : '' %>" name='lname' id='user_lname' value='<%= @current_user.lname if !@current_user.blank? %>' required='required' /></span>
+                    </div>
+                    <div class="form-group" id='cardNumberContainer'>
+                      <label>
+                        <span>Card Number</span>
+                        <input type="text" data-stripe="number" placeholder='Card number' id='cardNumber' required='required' />
+                      </label>
+                      <span class='CardImage' id='genericCardImage'><%= image_tag('credit.png', size:'33x20') %></span>
+                      <span class='CardImage' id='amexCardImage'><%= image_tag('amex.png', size:'33x20') %></span>
+                      <span class='CardImage' id='discoverCardImage'><%= image_tag('discover.png', size:'33x20') %></span>
+                      <span class='CardImage' id='masterCardImage'><%= image_tag('mastercard.png', size:'33x20') %></span>
+                      <span class='CardImage' id='visaCardImage'><%= image_tag('visa.png', size:'33x20') %></span>
+                    </div>
+                    <div class="form-group" id='cvcContainer'>
+                      <label>
+                        <span>CVC</span>
+                        <input type="text" data-stripe="cvc" placeholder='Security code' id='cvc' required='required' />
+                      </label>
+                    </div>
+                    <div class="form-group" id='cardExpContainer'>
+                      <label>
+                        <span>Expiration (MM/YYYY)</span>
+                      </label>
+                      <input type="text" size="2" data-stripe="exp-month" placeholder='01' id='exp-month' required='required' />
+                      <span> / </span>
+                      <input type="text" size="4" data-stripe="exp-year" placeholder='2016' id='exp-year' required='required' />
+                    </div>
+                    <input type='hidden' name='selected_package' id='selectedPackageID' />
+
+                    <!-- TODO: Make singular or plural -->
+                    <span class='Icon Spinner' id='ticketPaymentSpinner'>&#59392;</span>
+                    <span id='poweredByStripe'>Payments powered by <a href='https://stripe.com' target='_blank'>Stripe</a></span>
+                    
+                  </form>
+                  <div class='alert alert-success' id='transactionSuccess'>Transaction successful. <a href='/my/tickets'>View your tickets here.</a></div>
+                  <div class='alert alert-danger' id='transactionFail'>There was a problem with your card information. Try again or <a href='mailto:thetap@tunetapmusic.com'>contact us</a> for help. <span id='paymentFailSentence'></span></div>
+                  <div class='alert alert-danger' id='transactionError'>There was a server error processing your transaction. Try again or <a href='mailto:thetap@tunetapmusic.com'>contact us</a> for help. <span id='paymentErrorSentence'></span></div>
+
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  Agree to Terms and Conditions
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body">
+                <input type="checkbox" name="agree" value="yes"> I agree<br>
+                <input type="checkbox" name="disagree" value="no"> I do not agree<br>
+                <hr /><p id='help'>Any issues? We're glad to help. Email us: <a href='mailto:thetap@tunetap.com'>thetap@tunetap.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id = 'Checkout'>Checkout</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

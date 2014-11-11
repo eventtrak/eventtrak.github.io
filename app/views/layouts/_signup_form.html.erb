@@ -1,0 +1,54 @@
+<div id="fb-root"></div>
+
+
+<div class='BetaSignup' id='betaSignup'>
+
+  <div id="signupError" class="alert alert-danger Hidden">
+    <% if @user and @user.errors.any? %>
+    The form contains <%= pluralize(@user.errors.count, "error") %>.
+    <ul>
+      <% @user.nice_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+
+  <div id="signupSuccess" class="alert alert-success Hidden">
+    <% if not @success.blank? and @success %>
+    Success! We've added you to our beta users list!
+    <% end %>
+  </div>
+
+
+  
+  <%= form_for(@user, url: users_create_beta_path, html: { id: 'betaSignupForm' }) do |f| %>
+  
+  <%= f.text_field :fname, placeholder: "First name" %>
+
+  <%= f.text_field :lname, placeholder: "Last name" %>
+
+  <br />
+
+  <%= f.email_field :email, placeholder: "Email address" %>
+
+  <div id='signupChecks'>
+    <span id='artistCheck' data-placement='top' data-trigger='hover' data-title="If you make music,                                                                                                                                                                                                                                                                                                                                     check this box">
+	  <%= f.check_box :is_artist %>
+
+      <% if (defined?(is_home_page) && is_home_page) %>
+	  <span class='CheckboxLabel CheckboxLabelHome'>I make music (artist or manager)</span>
+	  <% else %>
+	  <span class='CheckboxLabel'>I make music (artist or manager)</span>
+	  <% end %>
+      
+    </span>
+  </div>
+
+  <br />
+
+  <% end %>
+  <%= button_tag "Join", class: "btn btn-large btn-primary", id: "joinButton" %>
+  
+</div>

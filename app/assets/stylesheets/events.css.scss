@@ -1,0 +1,1957 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "shared";
+body.events {
+
+  background: black;
+  position: relative;
+
+  a {
+    color: black;
+    //color: $blue;
+    font-weight: 400 !important;
+  }
+  
+  .before{
+    .WelcomeHeader {
+      margin: auto;
+      position: relative;
+      top: -40px;
+      width: 800px;
+      @include vendor-prefix(transition, top 0.5s);
+      &.Active {
+        top: 0;
+      }
+      .WhatIsTunetapHeader {
+        display: inline-block;
+        float: left;
+        > h1 {
+          background: $orange;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          color: white;
+
+          font-size: 18px;
+          font-weight: 400;
+          margin: 0;
+
+        }
+        #whatIsModalTrigger {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .UserHi {
+        color: white;
+        display: inline-block;
+        float: right;
+        padding: 10px 0;
+        .TicketsLink {
+          @include vendor-prefix(transition, color 0.25s);
+          &:hover {
+            color: $orange;
+          }
+          .MyTicketsCount {
+            background: $orange;
+            border-radius: 10px;
+            color: white;
+            padding: 2px 6px;
+          }
+        }
+      }
+    }
+    .EventHero {
+      background: image-url('dylan-concert.jpg') no-repeat center center fixed;
+      @include vendor-prefix(background-size, cover);
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      // position: relative;
+      z-index: -1;
+    }
+    .EventHeroContent {
+      clear: both;
+      margin: auto;
+      padding-top: 20px;
+      width: 800px;
+      @include vendor-prefix(transition, margin-top 1.5s);
+      .EventFundingStatus{
+        background: transparentize(#EEE, 0.02);
+        box-shadow: 0px 4px 8px 0px transparentize(black, 0.5);
+        color: #444;
+        height: 86px;
+        width: 800px;
+        margin: 0 auto;
+        padding: 4px 12px;
+        right: 0;
+        text-shadow: 0 1px white;
+        top: 350px;
+      }
+      .EventCardHeader {
+        background: transparentize(#EEE, 0.02);
+        box-shadow: 0px 4px 8px 0px transparentize(black, 0.5);
+        color: #444;
+        height: 110px;
+        left: 0;
+        margin: 0;
+        padding: 0px 12px;
+        position: absolute;
+        right: 0;
+        text-shadow: 0 1px white;
+        top: 0;
+        h1 {
+          font-size: 24px;
+          /* font-weight: 300; */
+          line-height: 24px;
+          margin: 8px auto;
+        }
+        p {
+          // color: #888;
+        font-weight: 300;
+        }
+      }
+      .EventFunding {
+        margin-top: 17px;
+        position: relative;
+        // width: 800px;
+        .EventCardHeader {
+          border-radius: 4px;
+          height: 100px;
+          .FundingStatus {
+            //color: #666;
+            padding-top: 10px;
+            color: black;
+            font-size: 20px;
+            font-weight: 300;
+            strong {
+              font-weight: 1000;
+            }
+          }
+          .EventFundingBar {
+            height: 30px !important;
+            margin-top: 13px;
+            .EventFundingProgress {
+              background-color: $orange;
+            }
+            .EventFundingPercent {
+              @include vendor-prefix(transition, opacity 1s);
+              color: black;
+              margin-top: 2px;
+              opacity: 1;
+              text-shadow: none;
+              font-size: 15px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .EventInfo {
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: top;
+        width: 440px;
+
+        .EventDetails {
+          background: transparentize(black, 0.15);
+          border-radius: 4px;
+          height: 110px;
+          border: 1px solid transparentize(white, 0.85);
+          color: white;
+          display: inline-block;
+
+
+
+          margin-right: 8px;
+          overflow: hidden;
+          padding: 8px;
+          position: relative;
+          vertical-align: top;
+          width: 440px;
+          .EventArtistHeader {
+            height: 110px;
+            /* a:hover { */
+            /*   text-decoration: underline !important; */
+            /* } */
+
+            
+            .EventPeople {
+              display: inline-block;
+              float: left;
+              margin-top: 6px;
+              .EventShareLinks {
+                // display: inline-block;
+              .EventShare {
+                display: inline-block;
+                margin-right: 10px;
+                position: relative;
+                &.FacebookButton {
+                  top: -5px;
+                }
+                &.TwitterButton {
+                  width: 80px;
+                }
+              }
+              }
+              h1 {
+                display: inline-block;
+                // margin: 4px 0;
+                width: 150px;
+              }
+              p {
+                display: inline-block;
+                margin-bottom: 6px;
+                width: 220px;
+              }
+            }
+            .EventDate {
+              color: black !important;
+              display: inline-block;
+              float: right;
+              margin-top: 11px;
+              .EventPassed {
+                background-color: $orange;
+                height: 155px;
+                position: absolute;
+                right: -85px;
+                top: -84px;
+                width: 155px;
+                @include vendor-prefix(transform, rotate(45deg));
+              }
+              .EventPassedLabel {
+                color: white;
+                font-size: 20px;
+                font-weight: 300;
+                opacity: 1;
+                position: absolute;
+                right: 2px;
+                top: 20px;
+                @include vendor-prefix(transform, rotate(45deg)); 
+              }
+              p {
+                font-weight: 300;
+                margin: 0;
+                opacity: 1;
+                position: relative;
+                text-align: center;
+                &.EventMonth {
+                  margin-top: 2px;
+                }
+                &.EventDay {
+                  font-size: 36px;
+                  font-weight: 300;
+                  line-height: 36px;
+                  sup {
+                    font-size: 18px;
+                    top: -16px;
+                  }
+                }
+              }
+            }
+          }
+          .EventDetailsContent {
+            margin-top: 400px;
+            //opacity: 0.4;
+            h2 {
+              font-size: 32px;
+              font-weight: 300;
+              margin: 2px auto;
+            }
+            .EventFundingProgress {
+              p {
+                font-weight: 300;
+              }
+            }
+          }
+        }
+
+        .PreorderPackages {
+          display: inline-block;
+          list-style: none;
+          margin-top: 45px;
+          margin-right: 20px;
+          opacity: 1.0;
+          padding-left: 0;
+          position: relative;
+          text-align: center;
+          vertical-align: top;
+          width: 440px;
+          .PreorderPackage {
+            display: inline-block;
+            margin: auto;
+            .btn {
+              // background: transparentize(#EEE, 0.02);
+            display: inline-block;
+            height: 100px;
+            margin-top: 0px;
+            width: 200px;
+            @include vendor-prefix(transition, "margin-top 1.5s opacity 1.5s");
+            &.Disabled {
+              opacity: 0.75;
+              &:hover {
+                background-color: $orange;
+                cursor: default;
+              }
+            }
+            &#ticket1 {
+              margin-left: 0;
+              margin-right: 7px;
+            }
+            &#ticketVIP {
+              margin-left: 7px;
+              margin-right: 0;
+              overflow: hidden;
+              position: relative;
+              .PackageLimited {
+                background-color: #EEE;
+                height: 80px;
+                position: absolute;
+                right: -40px;
+                top: -40px;
+                width: 80px;
+                @include vendor-prefix(transform, rotate(45deg));
+              }
+              .PackageLimitedLabel {
+                color: #666;
+                font-size: 12px;
+                position: absolute;
+                right: 0;
+                top: 14px;
+                @include vendor-prefix(transform, rotate(45deg)); 
+              }
+            }
+            .PackageAmount {
+              font-size: 20px;
+              font-weight: 600;
+              line-height: 28px;
+              margin: 10px auto 6px auto;
+            }
+            .PackageCost {
+              // color: $orange;
+              font-weight: 300;
+              // margin-bottom: 2px;
+            }
+            }
+          }
+          .PackageLoginDiscount, .TicketAccess {
+            color: white !important;
+            display: block;
+            margin: 12px auto;
+            @include vendor-prefix(transition, margin-top 1.5s);
+            font-size: 13px;
+            font-weight: 300;
+            margin-left: 0;
+            text-align: left;
+            // width: 430px;
+            .PackageAction {
+              color: $orange !important;
+              font-weight: 600;
+              &:hover {
+                color: $blue !important;
+                text-decoration: none;
+              }
+            }
+          }
+          .TicketAccess {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .panel.panel-default.EventAttendees.Small{
+        height: 300px;
+        width: 340px !important;
+      }
+
+      #whatIsModalTrigger{
+        margin-left: 0px;
+      }
+
+      .EventPlacePeople {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: top;
+        width: 340px;
+
+        .EventLocation {
+          background: transparentize(black, 0.15);
+          border-radius: 4px;
+          box-shadow: 0 0 4px 4px transparentize(white, 0.9);
+          color: white;
+          // display: block;
+          height: 110px;
+          overflow: hidden;
+          position: relative;
+          vertical-align: top;
+          width: 340px;
+          bottom: 8px;
+          
+          .EventLocationHeader {
+            h1 {
+              margin-top: 14px;
+            }
+          }
+          .EventLocationMap {
+            display: none;
+            margin-top: 17px;
+          }
+          .EventLocationImage {
+            margin-top: 47px;
+          }
+          .EventPlace {
+            display: inline-block;
+            float: left;
+            margin-top: 8px;
+          }
+          .EventAge {
+            color: #222 !important;
+            display: inline-block;
+            float: right;
+            margin-top: 18px;
+            p {
+              font-weight: 300;
+              text-align: center;
+              &.Event18 {
+                font-size: 36px;
+                font-weight: 300;
+                line-height: 36px;
+                margin: 4px;
+              }
+              &.EventOverUnder {
+                margin: 0;
+              }
+            }
+          }
+        }
+
+
+        .EventFunding {
+          margin-top: 20px !important;
+          position: relative;
+          width: 340px;
+          height: 100px;
+          .EventCardHeader {
+            border-radius: 4px;
+            .FundingStatus {
+              color: #666;
+              padding-top: 4px;
+              width:780px;
+              margin: auto;
+            }
+            .EventFundingBar {
+              height: 20px !important;
+              margin-top: 14px;
+              .EventFundingProgress {
+                // background-color: $orange;
+              }
+              .EventFundingPercent {
+                @include vendor-prefix(transition, opacity 1s);
+                color: black;
+                margin-top: -1px;
+                opacity: 1;
+                text-shadow: none;
+                height: 20px;
+              }
+            }
+            .EventDetailsHalf {
+              background: transparentize(black, 0.15);
+              border-radius: 4px;
+              height: 110px;
+              border: 1px solid transparentize(white, 0.85);
+              color: white;
+              display: inline-block;
+
+
+
+              margin-right: 8px;
+              overflow: hidden;
+              padding: 8px;
+              position: relative;
+              vertical-align: top;
+              width: 440px;
+              .EventArtistHeader {
+                height: 110px;
+                /* a:hover { */
+                /*   text-decoration: underline !important; */
+                /* } */
+                .EventPeople {
+                  display: inline-block;
+                  float: left;
+                  margin-top: 6px;
+                  .EventShareLinks {
+                    // display: inline-block;
+              .EventShare {
+                display: inline-block;
+                margin-right: 10px;
+                position: relative;
+                &.FacebookButton {
+                  top: -5px;
+                }
+                &.TwitterButton {
+                  width: 80px;
+                }
+              }
+                  }
+                  h1 {
+                    display: inline-block;
+                    // margin: 4px 0;
+                    width: 150px;
+                  }
+                  p {
+                    display: inline-block;
+                    margin-bottom: 6px;
+                    width: 220px;
+                  }
+                }
+                .EventDate {
+                  color: black;
+                  //color: #222 !important;
+                  display: inline-block;
+                  float: right;
+                  margin-top: 11px;
+                  .EventPassed {
+                    background-color: $orange;
+                    height: 155px;
+                    position: absolute;
+                    right: -85px;
+                    top: -84px;
+                    width: 155px;
+                    @include vendor-prefix(transform, rotate(45deg));
+                  }
+                  .EventPassedLabel {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 300;
+                    opacity: 1;
+                    position: absolute;
+                    right: 2px;
+                    top: 20px;
+                    @include vendor-prefix(transform, rotate(45deg)); 
+                  }
+                  p {
+                    font-weight: 300;
+                    margin: 0;
+                    opacity: 1;
+                    position: relative;
+                    text-align: center;
+                    &.EventMonth {
+                      margin-top: 2px;
+                    }
+                    &.EventDay {
+                      font-size: 36px;
+                      font-weight: 300;
+                      line-height: 36px;
+                      sup {
+                        font-size: 18px;
+                        top: -16px;
+                      }
+                    }
+                  }
+                }
+              }
+              .EventDetailsContent {
+                margin-top: 400px;
+                opacity: 0.4;
+                h2 {
+                  font-size: 32px;
+                  font-weight: 300;
+                  margin: 2px auto;
+                }
+                .EventFundingProgress {
+                  p {
+                    font-weight: 300;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+
+        .EventAttendees {
+          // display: inline-block;
+        margin: 140px auto 0 auto;
+        max-height: 343px;
+        overflow: scroll;
+        position: relative;
+        vertical-align: top;
+        width: 340px;
+
+        // @include vendor-prefix(transition, height 0.75s);
+        .panel-body {
+          overflow: scroll;
+        }
+        &.Small {
+          .FacebookProfileCard {
+            margin: 8px 4px;
+            .FacebookProfileImage {
+              height: 70px;
+              width: 70px;
+            }
+            .ProfileName {
+              font-size: 11px;
+              width: 70px;
+            }
+          }
+        }
+        h2 {
+          font-size: 26px;
+          font-weight: 300;
+          line-height: 26px;
+          margin: 0;
+        }
+        .FacebookProfileCard {
+          display: inline-block;
+          margin: 10px 5px;
+          vertical-align: top;
+          .FacebookProfileImage {
+            display: inline-block;
+            height: 86px;
+            width: 86px;
+          }
+          .ProfileName {
+            color: black;
+            font-size: 12px;
+            font-weight: 300;
+            margin: 4px auto 0 auto;
+            text-align: center;
+            width: 76px;
+          }
+        }
+        .AttendeesExpand {
+          background: transparentize(white, 0.15);
+          bottom: 0;
+          font-weight: 300;
+          left: 0;
+          padding: 6px 0;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          @include vendor-prefix(transition, background 0.25s);
+          &:hover {
+            background: transparentize($orange, 0.15);
+            // color: white;
+            cursor: pointer;
+          }
+        }
+        }
+      }
+
+      @media (max-width: 819px) {
+        width: 400px;
+        .EventInfo {
+          display: block;
+        }
+        .EventFundingStatus {
+          width: 440px !important;
+        }
+        .EventPlacePeople {
+          clear: both;
+          display: block;
+          margin-left: 0;
+          margin-top: 20px;
+          width: 440px;
+          .EventLocation {
+            width: 440px;
+          }
+          .EventFunding {
+            width: 440px;
+          }
+          
+          .EventAttendees {
+            width: 440px;
+            margin: 20px auto 0 auto;
+          }
+        }
+        #whatIsModalTrigger {
+          margin-bottom: 56px;
+        }
+      }
+      
+      .btn {
+        height: 40px;
+        margin-top: 20px;
+        // opacity: 0.85;
+        width: 390px;
+        @include vendor-prefix(transition, opacity 0.25s);
+        &.Active {
+          opacity: 1;
+        }
+        &.PreorderButton {
+          margin-right: 8px;
+        }
+        &.WhosGoingButton {
+          margin-left: 8px;
+        }
+        &#whatIsModalTrigger {
+          background: #999;
+          color: white;
+          opacity: 1;
+          width: 353px;
+          &:hover {
+            background: #888;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .modal {
+      .modal-content {
+        background-color: #EFEFEF;
+        .FacebookButton {
+          background: #3B5998;
+          color: white;
+          width: 100%;
+        }
+        .FacebookDisclaimer {
+          font-weight: 300;
+          margin-top: 20px;
+        }
+        .alert {
+          display: none;
+        }
+      }
+      .modal-footer {
+        margin-top: 0;
+      }
+    }
+    #loginModal {
+      #facebookLogin {
+        display: inline-block;
+        margin-right: 15px;
+        margin-top: 25px;
+        vertical-align: top;
+        width: 260px;
+        .FacebookButton {
+          width: 100%;
+        }
+        .modal-body {
+          margin: 15px;
+        }
+      }
+      #loginForm {
+        display: inline-block;
+        vertical-align: top;
+        width: 260px;
+      }
+    }
+    #signupModal {
+      .modal-dialog {
+        width: 350px;
+      }
+      #facebookSignup {
+        display: inline-block;
+        margin: 15px;
+        vertical-align: top;
+        width: 350px;
+        .FacebookButtonLogo {
+          color: white;
+          font-size: 24px;
+          left: 22px;
+          position: absolute;
+          top: 1px;
+        }
+      }
+      #signupForm {
+        display: inline-block;
+        vertical-align: top;
+        width: 260px;
+        #signupGroupFirstName, #signupGroupLastName {
+          display: inline-block;
+          width: 128px;
+        }
+        #signupGroupFirstName {
+          margin-right: 1px;
+        }
+      }
+      // #signupSuccess {
+        //   display: none;
+  // }
+      // #signupFail {
+        //   display: none;
+  // }
+    }
+    #paymentModal {
+      #paymentModalDialog {
+        #packageDescription {
+          font-weight: 300;
+        }
+        width: 342px;
+        #paymentForm {
+          hr {
+            border-top: 1px solid #DDD;
+          }
+          label {
+            color: #444;
+            // font-weight: 4
+          }
+          #ticketQuantity {
+            span {
+              display: block;
+            }
+            #quantity {
+              display: inline-block;
+              width: 138px;
+            }
+            #ticketCostLabel {
+              display: inline-block;
+              margin-left: 12px;
+              width: 126px;
+              #ticketCost {
+                display: inline-block;
+              }
+            }
+          }
+          #userEmail {
+            width: 100%;
+            label {
+              width: 100%;
+              #user_email {
+                width: 100%;
+              }
+            }
+          }
+          #userName {
+            width: 100%;
+            label {
+              width: 100%;
+            }
+            input[type='text'] {
+              display: inline-block;
+              margin-right: 1px;
+              width: 138px;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+          #cardNumberContainer {
+            position: relative;
+            width: 100%;
+            label {
+              width: 100%;
+              #cardNumber {
+                width: 100%;
+              }
+            }
+            .CardImage {
+              display: none;
+              position: absolute;
+              right: 10px;
+              top: 25px;
+              &.Visible {
+                display: inline-block;
+              }
+            }
+          }
+          #cvcContainer {
+            display: inline-block;
+            width: 110px;
+            label {
+              width: 100%;
+              #cvc {
+                width: 100%;
+              }
+            }
+          }
+          #cardExpContainer {
+            display: inline-block;
+            margin-left: 12px;
+            width: 155px;
+            label {
+              display: inline-block;
+              width: 100%;
+            }
+            #exp-month {
+              display: inline-block;
+              width: 70px;
+            }
+            span {
+              display: inline-block;
+            }
+            #exp-year {
+              display: inline-block;
+              width: 70px;
+            }
+          }
+          #submitPaymentButton {
+            width: 100%;
+          }
+          #ticketPaymentSpinner {
+            display: none;
+          }
+          #poweredByStripe, #help {
+            font-size: 10px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 18px;
+            width: 100%;
+          }
+          #help {
+            margin-top: 2px;
+          }
+        }
+        .alert {
+          margin-top: 24px;
+        }
+      }
+    }
+    @media (max-width: 585px) {
+      #whatIsModal {
+        .Column2 {
+          margin-bottom: 16px !important;
+          .Column {
+            display: block;
+            width: 100% !important;
+            h3 {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .EventFundingStatus{
+      background: transparentize(#EEE, 0.02);
+      box-shadow: 0px 4px 8px 0px transparentize(black, 0.5);
+      color: #444;
+      height: 100px;
+      width: 800px;
+      padding: 4px 12px;
+      right: 0;
+      text-shadow: 0 1px white;
+      top: 350px;
+      border-radius: 4px;
+      text-align: center;
+
+
+      @media (max-width: 819px) {
+        width: 440px;
+        .EventFundingStatus {
+          width: 440px;
+        }
+      }
+
+
+
+      .EventPlacePeople {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: top;
+        width: 340px;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 24px;
+        margin: 0px auto;
+        -moz-box-sizing: border-box;
+        font-family: 'Lato',sans-serif !important;
+        color: rgb(51, 51, 51);
+
+
+      }
+
+      .EventPlacePeople2 {
+        margin: 0 auto;
+        vertical-align: top;
+        width: 340px;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 24px;
+        margin: 8px auto;
+        -moz-box-sizing: border-box;
+        font-family: 'Lato',sans-serif !important;
+        color: rgb(51, 51, 51);
+        float: left;
+
+      }
+
+      .EventPlacePeople3 {
+        margin-bottom: 100 px;
+        vertical-align: top;
+        width: 340px;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 24px;
+        margin: 20px auto;
+        -moz-box-sizing: border-box;
+        font-family: 'Lato',sans-serif !important;
+        color: rgb(51, 51, 51);
+        
+
+      }
+
+    }
+    
+    .EventDetails2 {
+      background: transparentize(black, 0.15);
+      border-radius: 4px;
+      border: 1px solid transparentize(white, 0.85);
+      color: white;
+      display: inline-block;
+      height: auto;
+      margin-right: 8px;
+      overflow: hidden;
+      padding: 8px;
+      position: relative;
+      vertical-align: top;
+      width: 800px;
+    }
+  }
+
+
+  .after{
+
+    .WelcomeHeader {
+      margin: auto;
+      position: relative;
+      top: -40px;
+      width: 800px;
+      @include vendor-prefix(transition, top 0.5s);
+      &.Active {
+        top: 0;
+      }
+      .WhatIsTunetapHeader {
+        display: inline-block;
+        float: left;
+        > h1 {
+          background: $orange;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          color: white;
+          display: inline-block;
+          font-size: 18px;
+          font-weight: 400;
+          margin: 0;
+          padding: 10px;
+        }
+        #whatIsModalTrigger {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .UserHi {
+        color: white;
+        display: inline-block;
+        float: right;
+        padding: 10px 0;
+        .TicketsLink {
+          @include vendor-prefix(transition, color 0.25s);
+          &:hover {
+            color: $orange;
+          }
+          .MyTicketsCount {
+            background: $orange;
+            border-radius: 10px;
+            color: white;
+            padding: 2px 6px;
+          }
+        }
+      }
+    }
+    .EventHero {
+      background: image-url('dylan-concert.jpg') no-repeat center center fixed;
+      @include vendor-prefix(background-size, cover);
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      // position: relative;
+      z-index: -1;
+    }
+    .EventHeroContent {
+      clear: both;
+      margin: auto;
+      padding-top: 20px;
+      width: 800px;
+      @include vendor-prefix(transition, margin-top 1.5s);
+      .EventCardHeader {
+        background: transparentize(#EEE, 0.02);
+        box-shadow: 0px 4px 8px 0px transparentize(black, 0.5);
+        color: #444;
+        height: 110px;
+        left: 0;
+        margin: 0;
+        padding: 4px 12px;
+        position: absolute;
+        right: 0;
+        text-shadow: 0 1px white;
+        top: 0;
+        h1 {
+          font-size: 24px;
+          /* font-weight: 300; */
+          line-height: 24px;
+          margin: 8px auto;
+        }
+        p {
+          // color: #888;
+        font-weight: 300;
+        }
+      }
+      .EventInfo {
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: top;
+        width: 440px;
+        .EventDetails {
+          background: transparentize(black, 0.15);
+          border-radius: 4px;
+          height: 114px;
+          border: 1px solid transparentize(white, 0.85);
+          color: white;
+          display: inline-block;
+          margin-right: 8px;
+          overflow: hidden;
+          padding: 8px;
+          position: relative;
+          vertical-align: top;
+          width: 440px;
+          .EventArtistHeader {
+            height: 110px;
+            /* a:hover { */
+            /*   text-decoration: underline !important; */
+            /* } */
+            .EventPeople {
+              display: inline-block;
+              float: left;
+              margin-top: 6px;
+              .EventShareLinks {
+                // display: inline-block;
+              .EventShare {
+                display: inline-block;
+                margin-right: 10px;
+                position: relative;
+                &.FacebookButton {
+                  top: -5px;
+                }
+                &.TwitterButton {
+                  width: 80px;
+                }
+              }
+              }
+              h1 {
+                display: inline-block;
+                // margin: 4px 0;
+                width: 150px;
+              }
+              p {
+                display: inline-block;
+                margin-bottom: 6px;
+                width: 220px;
+              }
+            }
+            .EventDate {
+              //color: #222 !important;
+            color: black;
+            display: inline-block;
+            float: right;
+            margin-top: 11px;
+            .EventPassed {
+              background-color: $orange;
+              height: 155px;
+              position: absolute;
+              right: -85px;
+              top: -84px;
+              width: 155px;
+              @include vendor-prefix(transform, rotate(45deg));
+            }
+            .EventPassedLabel {
+              color: white;
+              font-size: 20px;
+              font-weight: 300;
+              opacity: 1;
+              position: absolute;
+              right: 2px;
+              top: 20px;
+              @include vendor-prefix(transform, rotate(45deg)); 
+            }
+            p {
+              font-weight: 300;
+              margin: 0;
+              opacity: 1;
+              position: relative;
+              text-align: center;
+              &.EventMonth {
+                margin-top: 2px;
+              }
+              &.EventDay {
+                font-size: 36px;
+                font-weight: 300;
+                line-height: 36px;
+                sup {
+                  font-size: 18px;
+                  top: -16px;
+                }
+              }
+            }
+            }
+          }
+          .EventDetailsContent {
+            margin-top: 120px;
+            opacity: 0.4;
+            h2 {
+              font-size: 32px;
+              font-weight: 300;
+              margin: 2px auto;
+            }
+            .EventFundingProgress {
+              p {
+                font-weight: 300;
+              }
+            }
+          }
+        }
+        .PreorderPackages {
+          display: inline-block;
+          list-style: none;
+          margin-top: 0px;
+          margin-right: 20px;
+          padding-left: 0;
+          position: relative;
+          text-align: center;
+          vertical-align: top;
+          width: 100%;
+          .PreorderPackage {
+            display: inline-block;
+            margin: auto;
+            .btn {
+              // background: transparentize(#EEE, 0.02);
+            display: inline-block;
+            height: 100px;
+            margin-top: 0px;
+            width: 200px;
+            @include vendor-prefix(transition, "margin-top 1.5s opacity 1.5s");
+            &.Disabled {
+              opacity: 0.75;
+              &:hover {
+                background-color: $orange;
+                cursor: default;
+              }
+            }
+            &#ticket1 {
+              margin-left: 0;
+              margin-right: 7px;
+            }
+            &#ticketVIP {
+              margin-left: 7px;
+              margin-right: 0;
+              overflow: hidden;
+              position: relative;
+              .PackageLimited {
+                background-color: #EEE;
+                height: 80px;
+                position: absolute;
+                right: -40px;
+                top: -40px;
+                width: 80px;
+                @include vendor-prefix(transform, rotate(45deg));
+              }
+              .PackageLimitedLabel {
+                color: #666;
+                font-size: 12px;
+                position: absolute;
+                right: 0;
+                top: 14px;
+                @include vendor-prefix(transform, rotate(45deg)); 
+              }
+            }
+            .PackageAmount {
+              font-size: 20px;
+              font-weight: 600;
+              line-height: 28px;
+              margin: 10px auto 6px auto;
+            }
+            .PackageCost {
+              // color: $orange;
+              font-weight: 300;
+              // margin-bottom: 2px;
+            }
+            }
+          }
+          .PackageLoginDiscount, .TicketAccess {
+            color: white !important;
+            display: block;
+            margin: 12px auto;
+            @include vendor-prefix(transition, margin-top 1.5s);
+            font-size: 13px;
+            font-weight: 300;
+            margin-left: 0;
+            text-align: left;
+            // width: 430px;
+            .PackageAction {
+              color: $orange !important;
+              font-weight: 600;
+              &:hover {
+                color: $blue !important;
+                text-decoration: none;
+              }
+            }
+          }
+          .TicketAccess {
+            margin-bottom: 0;
+            color: white !important;
+          }
+        }
+      }
+      .EventPlacePeople {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: top;
+        width: 340px;
+
+        .EventLocation {
+          background: transparentize(black, 0.15);
+          border-radius: 4px;
+          box-shadow: 0 0 4px 4px transparentize(white, 0.9);
+          color: white;
+          // display: block;
+          height: 110px;
+          overflow: hidden;
+          position: relative;
+          vertical-align: top;
+          width: 340px;
+          bottom: 7px;
+
+          .EventLocationHeader {
+            h1 {
+              margin-top: 14px;
+            }
+          }
+          .EventLocationMap {
+            display: none;
+            margin-top: 17px;
+          }
+          .EventLocationImage {
+            margin-top: 47px;
+          }
+          .EventPlace {
+            display: inline-block;
+            float: left;
+          }
+          .EventAge {
+            color: #222 !important;
+            display: inline-block;
+            float: right;
+            margin-top: 18px;
+            p {
+              font-weight: 300;
+              text-align: center;
+              &.Event18 {
+                font-size: 36px;
+                font-weight: 300;
+                line-height: 36px;
+                margin: 4px;
+              }
+              &.EventOverUnder {
+                margin: 0;
+              }
+            }
+          }
+        }
+        .EventFunding {
+          margin-top: 20px !important;
+          position: relative;
+          width: 340px;
+          height: 100px;
+          .EventCardHeader {
+            border-radius: 4px;
+            height: 100px;
+            .FundingStatus {
+              color: #666;
+              padding-top: 4px;
+              width:780px;
+              margin: auto;
+            }
+            .EventFundingBar {
+              height: 20px;
+              margin-top: 10px;
+              .EventFundingProgress {
+                // background-color: $orange;
+              }
+              .EventFundingPercent {
+                @include vendor-prefix(transition, opacity 1s);
+                color: black;
+                margin-top: 1px;
+                opacity: 1;
+                text-shadow: none;
+                height: 20px;
+              }
+            }
+          }
+        }
+
+
+        .EventAttendees {
+          // display: inline-block;
+        margin: 124px auto 0 auto;
+        max-height: 343px;
+        overflow: scroll;
+        position: relative;
+        vertical-align: top;
+        width: 340px;
+        // @include vendor-prefix(transition, height 0.75s);
+        .panel-body {
+          overflow: scroll;
+        }
+        &.Small {
+          .FacebookProfileCard {
+            margin: 8px 4px;
+            .FacebookProfileImage {
+              height: 70px;
+              width: 70px;
+            }
+            .ProfileName {
+              font-size: 11px;
+              width: 70px;
+            }
+          }
+        }
+        h2 {
+          font-size: 26px;
+          font-weight: 300;
+          line-height: 26px;
+          margin: 0;
+        }
+        .FacebookProfileCard {
+          display: inline-block;
+          margin: 10px 5px;
+          vertical-align: top;
+          .FacebookProfileImage {
+            display: inline-block;
+            height: 86px;
+            width: 86px;
+          }
+          .ProfileName {
+            color: black;
+            font-size: 12px;
+            font-weight: 300;
+            margin: 4px auto 0 auto;
+            text-align: center;
+            width: 76px;
+          }
+        }
+        .AttendeesExpand {
+          background: transparentize(white, 0.15);
+          bottom: 0;
+          font-weight: 300;
+          left: 0;
+          padding: 6px 0;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          @include vendor-prefix(transition, background 0.25s);
+          &:hover {
+            background: transparentize($orange, 0.15);
+            // color: white;
+            cursor: pointer;
+          }
+        }
+        }
+      }
+      @media (max-width: 819px) {
+        width: 400px;
+        .EventInfo {
+          display: block;
+        }
+        .EventPlacePeople {
+          clear: both;
+          display: block;
+          margin-left: 0;
+          margin-top: 20px;
+          width: 440px;
+          .EventLocation {
+            width: 440px;
+          }
+          .EventFunding {
+            width: 440px;
+          }
+          .EventAttendees {
+            width: 440px;
+          }
+        }
+        #whatIsModalTrigger {
+          margin-bottom: 56px;
+        }
+      }
+      
+      .btn {
+        height: 40px;
+        margin-top: 20px;
+        // opacity: 0.85;
+        width: 390px;
+        @include vendor-prefix(transition, opacity 0.25s);
+        &.Active {
+          opacity: 1;
+        }
+        &.PreorderButton {
+          margin-right: 8px;
+        }
+        &.WhosGoingButton {
+          margin-left: 8px;
+        }
+        &#whatIsModalTrigger {
+          background: #999;
+          color: white;
+          opacity: 1;
+          width: 353px;
+          &:hover {
+            background: #888;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .modal {
+    .modal-content {
+      background-color: #EFEFEF;
+      .FacebookButton {
+        background: #3B5998;
+        color: white;
+        width: 100%;
+      }
+      .FacebookDisclaimer {
+        font-weight: 300;
+        margin-top: 20px;
+      }
+      .alert {
+        display: none;
+      }
+    }
+    .modal-footer {
+      margin-top: 0;
+    }
+  }
+  #loginModal {
+    #facebookLogin {
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 25px;
+      vertical-align: top;
+      width: 260px;
+      .FacebookButton {
+        width: 100%;
+      }
+      .modal-body3 {
+        margin:15px;
+      }
+    }
+    #loginForm {
+      display: inline-block;
+      vertical-align: top;
+      width: 260px;
+    }
+  }
+  #signupModal {
+    .modal-dialog {
+      width: 322px;
+    }
+    #facebookSignup {
+      display: inline-block;
+      margin-right: 15px;
+      position: relative;
+      vertical-align: top;
+      width: 260px;
+      .FacebookButtonLogo {
+        color: white;
+        font-size: 24px;
+        left: 22px;
+        position: absolute;
+        top: 1px;
+      }
+    }
+    #signupForm {
+      display: inline-block;
+      vertical-align: top;
+      width: 260px;
+      #signupGroupFirstName, #signupGroupLastName {
+        display: inline-block;
+        width: 128px;
+      }
+      #signupGroupFirstName {
+        margin-right: 1px;
+      }
+    }
+    // #signupSuccess {
+      //   display: none;
+  // }
+    // #signupFail {
+      //   display: none;
+  // }
+  }
+  #paymentModal {
+    #paymentModalDialog {
+      #packageDescription {
+        font-weight: 300;
+      }
+      width: 342px;
+      #paymentForm {
+        hr {
+          border-top: 1px solid #DDD;
+        }
+        label {
+          color: #444;
+          // font-weight: 4
+        }
+        #ticketQuantity {
+          span {
+            display: block;
+          }
+          #quantity {
+            display: inline-block;
+            width: 138px;
+          }
+          #ticketCostLabel {
+            display: inline-block;
+            margin-left: 12px;
+            width: 126px;
+            #ticketCost {
+              display: inline-block;
+            }
+          }
+        }
+        #userEmail {
+          width: 100%;
+          label {
+            width: 100%;
+            #user_email {
+              width: 100%;
+            }
+          }
+        }
+        #userName {
+          width: 100%;
+          label {
+            width: 100%;
+          }
+          input[type='text'] {
+            display: inline-block;
+            margin-right: 1px;
+            width: 138px;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        #cardNumberContainer {
+          position: relative;
+          width: 100%;
+          label {
+            width: 100%;
+            #cardNumber {
+              width: 100%;
+            }
+          }
+          .CardImage {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 25px;
+            &.Visible {
+              display: inline-block;
+            }
+          }
+        }
+        #cvcContainer {
+          display: inline-block;
+          width: 110px;
+          label {
+            width: 100%;
+            #cvc {
+              width: 100%;
+            }
+          }
+        }
+        #cardExpContainer {
+          display: inline-block;
+          margin-left: 12px;
+          width: 155px;
+          label {
+            display: inline-block;
+            width: 100%;
+          }
+          #exp-month {
+            display: inline-block;
+            width: 70px;
+          }
+          span {
+            display: inline-block;
+          }
+          #exp-year {
+            display: inline-block;
+            width: 70px;
+          }
+        }
+        #submitPaymentButton {
+          width: 100%;
+        }
+        #ticketPaymentSpinner {
+          display: none;
+        }
+        #poweredByStripe, #help {
+          font-size: 10px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-top: 18px;
+          width: 100%;
+        }
+        #help {
+          margin-top: 2px;
+        }
+      }
+      .alert {
+        margin-top: 24px;
+      }
+    }
+  }
+  @media (max-width: 585px) {
+    #whatIsModal {
+      .Column2 {
+        margin-bottom: 16px !important;
+        .Column {
+          display: relative;
+          width: 100% !important;
+          h3 {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .EventFundingStatus{
+    background: transparentize(#EEE, 0.02);
+    box-shadow: 0px 4px 8px 0px transparentize(black, 0.5);
+    color: #444;
+    height: 80px;
+    width: 800px;
+    padding: 4px 13px;
+    right: 0;
+    text-shadow: 0 1px white;
+    top: 350px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .EventPlacePeople {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: top;
+    width: 340px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 24px;
+    margin: 8px auto;
+    -moz-box-sizing: border-box;
+    font-family: 'Lato',sans-serif !important;
+    color: rgb(51, 51, 51);
+
+  }
+
+  .EventPlacePeople2 {
+    margin: 0 auto;
+    vertical-align: top;
+    width: 340px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 24px;
+    margin: 20px auto;
+    -moz-box-sizing: border-box;
+    font-family: 'Lato',sans-serif !important;
+    color: rgb(51, 51, 51);
+    float: left;
+
+  }
+
+  .EventPlacePeople3 {
+    margin-bottom: 100 px;
+    vertical-align: top;
+    width: 340px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 24px;
+    margin: 20px auto;
+    -moz-box-sizing: border-box;
+    font-family: 'Lato',sans-serif !important;
+    color: rgb(51, 51, 51);
+    
+
+  }
+
+  .EventDetails2 {
+    background: transparentize(black, 0.15);
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    height: auto;
+    margin-right: 8px;
+    overflow: hidden;
+    padding: 8px;
+    //padding-left: 60px;
+    position: relative;
+    vertical-align: top;
+    width: 800px;
+    border: 1px solid rgba(255, 255, 255, 0.15);   
+    margin-top: 20px;
+    .EventDetailsContent {
+      margin-left: 60px;
+    }
+
+    .PreorderPackages {
+      .PackageLoginDiscount {
+        margin-left: 60px !important;
+      }
+    }
+  }
+
+  .EventFundingBar{
+    height: 25px !important;
+  }
+
+  p.EventLocationAddress{
+    font-size: 14px !important;
+  }
+
+  .EventFundingPercent {
+    @include vendor-prefix(transition, opacity 1s);
+    color: white;
+    margin-top: 0px;
+    opacity: 1;
+    text-shadow: none;
+    height: 20px;
+    font-weight: bold;
+    top: 3px !important;
+
+  }
+
+  strong{
+    // color: black;
+    font-size: 20px;
+    font-weight: 300 !important;
+  }
+
+  .panel.panel-default.EventAttendees.Small{
+    height: 300px;
+    width: 440px;
+  }
+
+  #whatIsModalTrigger{
+    margin-left: 100px;
+  }
+
+  .panel-default > panel-heading{
+    padding: 5px 15px;
+    height: 40px;
+  }
+
+  p.FundingStatus.FundingDone{
+    font-size: 14px;
+    font-weight: 300;
+    //color: rgb(136, 136, 136);
+    color: black;
+    
+  }
+
+  .EventDetailsContent2{
+    color: white;
+    display: block;
+    margin: 12px auto 12px 0px;
+    transition: margin-top 1.5s ease 0s;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+    position: relative  !important;
+    left: 110px;
+    width: 340px;
+  }
+
+
+  //Mobile Version
+
+  @media(max-width: 800px){
+    .EventDetails2{
+      left:0px;
+      width: 440px;
+      padding: 8px;
+
+    }
+
+    .EventFundingStatus{
+      width: 440px;
+    }
+
+    #whatIsModalTrigger{
+      margin-left: 0px;
+      width: 440px !important;
+    }
+
+    .EventDetailsContent2{
+      color: white;
+      display: block;
+      margin: 12px auto 12px 0px;
+      transition: margin-top 1.5s ease 0s;
+      font-size: 13px;
+      font-weight: 300;
+      text-align: left;
+      position: static;
+      left: 0px;
+      width: 440px;
+      margin-top: 10px;
+      bottom: 40px;
+
+      
+    }
+
+    .Logo {
+      opacity: 1.0;
+    }
+  }
+}
+
+.modal {
+  color: black;
+  .modal-dialog {
+  .modal-content {
+    .modal-header {
+      text-align:center;
+      color: #FF5900;
+    }
+    .modal-body {
+      #facebookSignup {
+        #btnCreate {
+          margin-top: 20px;
+          width: 100%;
+          background-color: $orange;
+          color: white;
+        }
+      }
+      margin: 0 140px;
+      p{
+        text-align: center;
+      }
+      input{
+        margin-left: 10px;
+      }
+    }
+    .modal-body2 {
+      margin: 10px;
+      .hi {
+        text-align: left;
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 340;
+        color: #FF5900;
+      }
+      input{
+        margin-left: 10px;
+      }
+    }
+  }
+  }
+}

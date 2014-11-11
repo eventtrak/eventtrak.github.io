@@ -1,0 +1,425 @@
+@import "shared";
+.whole_page {
+  .searchbar {
+	width: 100%;
+	height: 80px;
+	text-align: center;
+	margin-top: 40px;
+	form {
+	  padding: 4px;
+	  padding-top: 11px;
+	  padding-right: 9px;
+	  padding-left: 9px;
+	  border-radius: 8px;
+	  position: relative;
+	  display: inline-block;
+	  left: 10px;
+	  background: transparentize(#444, .1);
+	  width: 544px;
+	  span {
+		position: relative;
+		display: inline-block;
+		padding: 0px;
+		.search {
+		  margin: 0px 2px;
+		  background: white;
+		  padding: 10px;
+		  height: 40px;
+		  outline: none;
+		  opacity: .9;
+		  font-size: 16px;
+		  font-weight: 400;
+		  border-radius: 8px;
+		}
+		.location{
+		  width: 175px;
+		}
+		.vname {
+		  width: 160px;
+		}
+		.cap {
+		  width: 118px;
+		  font-size: 13px;
+		}
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+    	  /* display: none; <- Crashes Chrome on hover */
+    	  -webkit-appearance: none;
+    	  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+		}
+		::-webkit-input-placeholder { /* WebKit browsers */
+    	  color:   	gray;
+		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		  color:   	gray;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+    	  color:   	gray;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10+ */
+		  color:   	gray;
+        }
+
+		.Icon {
+			margin-bottom: 5px;
+		  right: 35px;
+		  color: white;
+		  height: 40px;
+		  &:hover{
+			cursor: pointer;
+			color: $orange;
+		  }
+		}
+	  }
+	}
+	button{
+		height: 40px;
+	  margin-bottom: 6px;
+	  position: relative;
+	  .buttonstyle {
+	  	display: inline-block;
+	  	top: -2px;
+	  	position: relative;
+	  }
+	}
+  }
+  .locations {
+		text-align: center;
+		margin-top: 10px;
+		display: inline-block;
+		.card {
+		  text-align: left;
+		  display: inline-block;
+		  height: 300px;
+		  width: 300px;
+		  margin: 5px;
+		  border-radius: 10px;
+		  overflow: hidden;
+		  position: relative;
+		  background-size: 100%;
+		  .card_info {
+			background-color: black;
+			opacity: .9;
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			.name {
+			  display: inline-block;
+			  width: 200px;
+			  p{
+				color: #f16214;
+				padding: 5px;
+				font-size: 16px;
+				font-weight:300px;
+				line-height: 20px;
+			  }
+			}
+			.info {
+			  right: 30px;
+			  display: inline-block;
+			  float: right;
+			  position: relative;
+			  top: 5px;
+			  padding-right: 5px;
+			  p {
+			  }
+
+			}
+		  }
+		}
+  }
+}
+body.venues {
+	background: #f16214;
+	background:url(http://i859.photobucket.com/albums/ab156/timestruck/IMG_1603_zps742289a3.jpg) no-repeat center center fixed;
+	@include vendor-prefix(background-size, cover);
+	color: white;
+	.back {
+		color: #FF5900;
+	}
+	.VenueIntro {
+		#venueInfo {
+			background: transparentize(black, 0.15);
+			bottom: 0;
+			display: inline-block;
+			left: 0;
+			position: absolute;
+			top: 0;
+			vertical-align: top;
+			width: 380px;
+			#venueName {
+				font-size: 34px;
+				font-weight: 300;
+				margin: 30px 20px 10px 20px;
+				text-align: center;
+			}
+			#venueLocation {
+				#venueAddress {
+					display: inline-block;
+					margin-bottom: 0;
+					padding: 10px;
+					text-align: center;
+					width: 190px;
+				}
+				#venueContact {
+					display: inline-block;
+					margin-bottom: 0;
+					padding: 10px;
+					text-align: center;
+					width: 190px;
+				}
+			}
+			.SocialLinks {
+				border-top: 1px solid transparentize(white, 0.5);
+				padding: 20px 10px;
+				.SocialLink {
+					border-radius: 4px;
+					padding: 4px 12px;
+					@include vendor-prefix(transition, background 0.25s);
+					&:hover {
+						background: transparentize(white, 0.9);
+					}
+					.Icon {
+						margin-right: 4px;
+					}
+				}
+			}
+			.Info {
+				margin: 10px 20px;
+				h2 {
+					display: inline-block;
+					font-size: 14px;
+					font-weight: 600;
+					margin: 0;
+				}
+				.InfoContent {
+					font-weight: 300;
+				}
+			}
+			.Setup {
+				margin: 30px 0 0 20px;
+			}
+		}
+		#calendarContainer {
+			bottom: 0;
+			display: inline-block;
+			left: 380px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			#eventsCalendar {
+				background: transparentize(black, 0.07);
+				border-radius: 4px;
+				display: inline-block;
+				height: 558px;
+				overflow: hidden;
+				width: 700px;
+				&.TallCalendar {
+					height: 658px;
+				}
+				th {
+					padding: 4px;
+				}
+				#calendarNavBar {
+					background: $orange;
+					border-bottom: 1px solid darken($orange, 20%);
+					#calendarNavMonth {
+						border-left: 1px solid transparentize(white, 0.85);
+						border-right: 1px solid transparentize(white, 0.85);
+						text-align: center;
+					}
+					#calendarNavNextMonth {
+						text-align: right;
+					}
+				}
+				#calendarWeekdayBar {
+					background: $orange;
+					th {
+						border-right: 1px solid transparentize(white, 0.85);
+						font-weight: 300;
+						text-align: center;
+						&:last-child {
+							border-right: none;
+						}
+					}
+				}
+				tr {
+					border-bottom: 1px solid transparentize(white, 0.85);
+					td {
+						border-right: 1px solid transparentize(white, 0.85);
+						height: 100px;
+						padding: 6px;
+						text-align: right;
+						vertical-align: top;
+						width: 100px;
+						&.OtherMonthDate {
+							color: transparentize(white, 0.65);
+						}
+						&.Today {
+							background: transparentize($orange, 0.75);
+						}
+						&:first-child {
+							border-left: 1px solid transparentize(white, 0.85);
+						}
+					}
+				}
+			}
+		}
+	}
+	#createEventModal {
+		color: #444;
+		.modal-header {
+			#modalLabel {
+				color: $orange;
+				font-size: 28px;
+				font-weight: 600;
+			}
+		}
+		.modal-body {
+			#createEventForm {
+				.form-group {
+					background: #EEE;
+					border-radius: 4px;
+					margin: 10px auto;
+					padding: 6px;
+					.CreateEventSectionDescription {
+						display: inline-block;
+						vertical-align: top;
+						width: 120px;
+						h2 {
+							font-size: 14px;
+							font-weight: 600;
+							margin: 0;
+						}
+						p {
+							color: #777;
+							font-size: 13px;
+							// font-weight: 300;
+							margin-top: 10px;
+						}
+					}
+					&#venueGroup {
+						#eventVenue {
+							display: inline-block;
+							width: 315px;
+						}
+					}
+				}
+				#eventDatePicker {
+					display: inline-block;
+				}
+				#eventTimePicker {
+					display: inline-block;
+					margin-left: 10px;
+					vertical-align: top;
+					width: 200px;
+					div {
+						padding: 4px;
+						h3 {
+							font-size: 14px;
+							font-weight: 600;
+							margin: 0;
+						}
+						select {
+							margin-top: 8px;
+						}
+						&#eventStartTimePicker {
+							margin-bottom: 10px;
+						}
+					}
+				}
+
+
+				#createTickets {
+					display: inline-block;
+					div {
+						display: inline-block;
+						vertical-align: top;
+						width: 210px;
+						.btn {
+							width: 100%;
+						}
+						.CreateTicket {
+							background: white;
+							border-radius: 6px;
+							display: none;
+							padding: 6px 0 0 0;
+							position: relative;
+							label {
+								display: inline-block;
+								margin: auto 6px;
+								position: relative;
+								top: 8px;
+							}
+							.input-group {
+								display: inline-block;
+								font-size: 0;
+								margin-bottom: 6px;
+								width: 100px;
+								.input-group-addon {
+									display: inline-block;
+									font-weight: 600;
+									height: 34px;
+									line-height: 22px;
+									width: 34px;
+								}
+								input[type='text'] {
+									width: 60px;
+								}
+							}
+							.CancelCreateTicket {
+								margin-right: 6px;
+							}
+							textarea {
+								border-left: none;
+								border-radius: 0;
+								border-right: none;
+								box-shadow: none;
+								padding: 4px;
+								resize: none;
+							}
+							.LimitTicket {
+								height: 34px;
+								padding-left: 6px;
+								position: relative;
+								label {
+									display: inline-block;
+									font-weight: 400;
+									// height: 34px;
+									margin-left: 0;
+									top: 0;
+									vertical-align: middle;
+								}
+								.TicketLimit {
+									border-bottom: none;
+									border-radius: 0;
+									border-right: none;
+									border-top: none;
+									box-shadow: none;
+									display: none;
+									vertical-align: middle;
+									width: 67px;
+								}
+							}
+						}
+					}
+				}
+
+				#fundingTargetBlock {
+					display: inline-block;
+					width: 423px;
+					.input-group-addon {
+						font-weight: 600;
+					}
+				}
+
+				#fundingDatePicker {
+					display: inline-block;
+				}
+			}
+		}
+		.modal-footer {
+			background-color: #EEE;
+		}
+	}
+}
