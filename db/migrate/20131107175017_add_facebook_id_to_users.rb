@@ -1,5 +1,0 @@
-class AddFacebookIdToUsers < ActiveRecord::Migration
-  def change
-    add_column :users, :facebook_id, :integer, limit: 8 # Bigint
-  end
-end

@@ -1,8 +1,0 @@
-<% if !user.blank? %>
-  <div class="FacebookProfileCard <%= 'Backer' if user.is_backer_for_event_id(1) %>" data-fb-id='<%= user.facebook_id if !user.facebook_id.blank? %>'>
-    <a href='https://www.facebook.com/<%= "#{ (user.facebook_id.blank?) ? '' : user.facebook_id }" %>' target='_blank'>
-      <%= image_tag(user.facebook_profile_url, class: 'FacebookProfileImage img-thumbnail', size:'86x86') %>
-      <p class='ProfileName'><%= "#{ user.fname } #{ user.lname }" %></p>
-    </a>
-  </div>
-<% end %>
