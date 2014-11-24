@@ -8,10 +8,19 @@
 #loginButton {
 	margin-right:1.5em;
 	color:white;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
 }
 #signupButton {
-	color:orange;
+	color:white;
 	border-color:orange;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+}
+#signupButton:hover{
+	background-color:orange;
 }
 body{
 	text-align: center;
@@ -112,11 +121,14 @@ button {
 #trak {
 	color:orange;
 }
+.payoff {
+	color:white;
+}
 header h1, 
 .payoff h1,
 .details .carousel,
 .social a:hover{
-	color: black;
+	color: orange;
 }
 
 .features p{
@@ -124,9 +136,11 @@ header h1,
 }
 
 /*---- Background ----*/
-.features,
+.features {
+	background:orange;
+}
 .detail .carousel-indicators .active {
-	background: #0bf397;	
+	background: orange;	
 }
 	
 
@@ -283,9 +297,13 @@ header .carousel-indicators li {
 
 .payoff{
 	overflow: hidden;
-	padding: 230px 0px 150px 0px;
-	min-height: 600px;
-	background: url('../img/musician.jpg');
+	padding: 0px 0px 0px 0px;
+	min-height: 406px;
+	width:100%;
+	height:100%;
+	background: url('../img/concert.jpg');
+	background-height:100%;
+	background-width:100%;
 	background-position: center top;
 	background-repeat: repeat-x;
 	color: white;
@@ -405,7 +423,6 @@ header .carousel-indicators li {
 	text-transform: uppercase;
 	font-weight: 300;
 }
-
 .features .circle{
 	box-sizing: border-box;
 	margin-right: auto;
@@ -413,7 +430,7 @@ header .carousel-indicators li {
 	padding-top: 33px;
 	width: 150px;
 	height: 150px;
-	border: 2px solid #ffffff;
+	border: 2px solid black;
 	border-radius: 100%;
 	text-align: center;
 	
@@ -464,7 +481,7 @@ header .carousel-indicators li {
 	text-align: center;
 }
 
-.get-it button.app-store{
+button.app-store{
 	width: 152px;
 	height: 52px;
 	background: url(../img/badge-appstore.png) #373737 no-repeat 0px 5px;
@@ -503,7 +520,7 @@ header .carousel-indicators li {
 }
 
 .get-it ul li a:hover{
-	color: #3A3A3A;
+	color: white;
 	text-decoration: none;
 	cursor: pointer;
 }
